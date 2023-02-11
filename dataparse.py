@@ -59,22 +59,16 @@ for pair in coordrange:
     avg = tempcalc(pair, phitemp)
     newpair = (pair[0] + 11, pair[1] - 55)
     cordphitemp[newpair] = avg
-
-
-
+    
 modelparams = {}
 for pair in coordrange:
     newpair =(pair[0] + 11, pair[1] - 55)
     modelparams[newpair] = (cordavgtemp[newpair], cordamptemp[newpair], cordphitemp[newpair])
-    # print(newpair, modelparams[newpair])
-        
 
 
 def predictedtemp(pair, time):
     y = 0.0018418*time -0.5415 + cordavgtemp[pair] + cordamptemp[pair] * np.sin(2*np.pi/12*time + cordphitemp[pair])
     return y
-
-
 
 
 
